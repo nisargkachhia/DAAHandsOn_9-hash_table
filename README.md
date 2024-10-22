@@ -10,6 +10,7 @@ This project implements a hash table data structure using Python, featuring:
 - Dynamic resizing of the hash table (doubling and halving based on occupancy).
 
 ## Project Structure
+
 N:/UTA/1st SEM/DAA/DAAHandsOn_9-hash_table/
 │
 ├── hash_table.py          # Contains the HashTable and DoublyLinkedListNode classes
