@@ -3,27 +3,51 @@ from hash_table import HashTable
 def main():
     ht = HashTable()
 
-    # Insert some values
-    ht.insert(10, 100)
-    ht.insert(20, 200)
-    ht.insert(30, 300)
-    ht.insert(40, 400)
+    while True:
+        print("\nHash Table Operations:")
+        print("1. Insert a key-value pair")
+        print("2. Find a value by key")
+        print("3. Delete a key-value pair")
+        print("4. Exit")
 
-    # Find a value
-    print("Find key 20:", ht.find(20))  # Output: 200
+        choice = input("Enter your choice (1-4): ")
 
-    # Delete a value
-    ht.delete(20)
-    print("Find key 20 after deletion:", ht.find(20))  # Output: None
+        if choice == '1':
+            try:
+                key = int(input("Enter key (integer): "))
+                value = int(input("Enter value (integer): "))
+                ht.insert(key, value)
+                print(f"Inserted: ({key}, {value})")
+            except ValueError:
+                print("Invalid input. Please enter integers for both key and value.")
 
-    # Dynamic resizing (will trigger resize)
-    ht.insert(50, 500)
-    ht.insert(60, 600)
-    ht.insert(70, 700)
-    
-    # Display final values
-    print("Find key 50:", ht.find(50))  # Output: 500
-    print("Find key 30:", ht.find(30))  # Output: 300
+        elif choice == '2':
+            try:
+                key = int(input("Enter key to find: "))
+                result = ht.find(key)
+                if result is not None:
+                    print(f"Value for key {key}: {result}")
+                else:
+                    print(f"Key {key} not found.")
+            except ValueError:
+                print("Invalid input. Please enter an integer for the key.")
+
+        elif choice == '3':
+            try:
+                key = int(input("Enter key to delete: "))
+                if ht.delete(key):
+                    print(f"Key {key} deleted successfully.")
+                else:
+                    print(f"Key {key} not found.")
+            except ValueError:
+                print("Invalid input. Please enter an integer for the key.")
+
+        elif choice == '4':
+            print("Exiting program.")
+            break
+
+        else:
+            print("Invalid choice. Please select a valid option (1-4).")
 
 if __name__ == "__main__":
     main()
